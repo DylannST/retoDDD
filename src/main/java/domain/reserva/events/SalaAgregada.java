@@ -2,6 +2,7 @@ package domain.reserva.events;
 
 import co.com.sofka.domain.generic.DomainEvent;
 import domain.generalvalues.Nombre;
+import domain.reserva.Sala;
 import domain.reserva.values.EstaActiva;
 import domain.reserva.values.SalaId;
 import domain.reserva.values.Silla;
@@ -20,6 +21,10 @@ public class SalaAgregada extends DomainEvent {
         this.estaActiva = estaActiva;
         this.nombreSala = nombreSala;
         this.sillas = sillas;
+    }
+
+    public Sala salaAgregada() {
+        return new Sala(this.salaId, this.estaActiva, this.nombreSala, this.sillas);
     }
 
     public SalaId getSalaId() {

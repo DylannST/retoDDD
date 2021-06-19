@@ -61,5 +61,23 @@ public class ReservaChange extends EventChange {
 
         });
 
+
+        apply((SalaActualizada event) -> {
+            reserva.actualizarSala(event.getSalaId(), event.getEstaActiva(), event.getNombreSala(), event.getSillas());
+        });
+
+        apply((SalaAgregada event) -> {
+            reserva.agregarSala(event.getSalaId(), event.getEstaActiva(), event.getNombreSala(), event.getSillas());
+        });
+
+        apply((ClienteActualizado event) -> {
+            reserva.actualizarCliente(event.getClienteId(), event.getEstado(), event.getEdad(), event.getNombreCliente());
+        });
+        apply((SalaIdActualizada event) -> {
+            reserva.actualizarSalaIdDeBoleto(event.getSalaId());
+        });
+        apply((TotalFacturaActualizada event) -> {
+            reserva.actualizarTotalFactura(event.getTotal());
+        });
     }
 }
